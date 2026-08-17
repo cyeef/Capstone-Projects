@@ -166,7 +166,7 @@ else:
                f"Per-Archetype Estimates: {sf['estimates_source']}.")
     e1, e2, e3 = st.columns(3)
     e1.metric("Low", f"${sf['envelope_low']:,}")
-    e2.metric("Central", f"${sf['envelope_central']:,}")
+    e2.metric("Medium", f"${sf['envelope_central']:,}")
     e3.metric("High", f"${sf['envelope_high']:,}")
 
     st.subheader("Population by Age Band")
@@ -186,6 +186,6 @@ else:
                "Value Envelope and Operating Cost Is the Quantified Funding "
                "Ask — Not a Weakness of the Proposal.")
 
-    st.subheader("Caveats (Stated, Not Hidden)")
+    st.subheader("Caveats (Stated)")
     for cv in sf['caveats']:
         st.markdown(f"- {cv}")
