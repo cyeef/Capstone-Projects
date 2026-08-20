@@ -24,6 +24,12 @@ with open(APP_DIR / 'triage_cohort.json') as f:
 # --- View selector (patient triage vs. site sustainability) ---
 view = st.sidebar.radio("View", ["Patient Triage", "Site Sustainability"])
 
+# --- Navigation link back to Google Slides ---
+st.sidebar.markdown("---")
+st.sidebar.markdown(
+    "[⬅ Back to Slide 5](https://docs.google.com/presentation/d/1rp3MlX2xggn7Y4aH58L6rUxMjPWubB7UYXN92WNLRqU/edit#slide=id.p5)"
+)
+
 if view == "Patient Triage":
     # --- Patient selector ---
     case_display_map = {
@@ -94,9 +100,6 @@ if view == "Patient Triage":
             st.caption(f"...and {len(p['medications'])-20} More")
 
     # --- Encounter value estimate (per patient) ---
-    # Chain: SNOMED -> ICD-10 -> MDC -> DRG weight range -> estimate.
-    # Loads per-case output of the diagnostic notebook if present; falls
-    # back to the documented 4 Aug 2026 cohort run.
     COHORT_RECORD = {   # 4 Aug 2026 run: (MDC, mapped, total, estimate)
         "Pediatric":         ("01 Nervous",      2,  3, 14232),
         "Healthy adult":     (None,              0,  0, None),
